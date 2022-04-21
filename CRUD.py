@@ -1,5 +1,6 @@
-students = {}
+students = {34: {'Cursos': {'DFAE': 0, 'dafa': 0}, 'Nombre': 'Diego', 'Dirección': 'fasd', 'Teléfono': 3, 'Email': 'dsa'}, 213: {'Cursos': {'CS': 0, 'DF': 0, 'FSD': 0}, 'Nombre': 'Dani', 'Dirección': 'fsdz', 'Teléfono': 3, 'Email': 'dsa'},29: {'Cursos': {'FDF': 0, 'F3F': 0, 'FRE': 0}, 'Nombre': 'Ana', 'Dirección': 'sa', 'Teléfono': 323, 'Email': 'ana'}}
 loop = True
+characters="{}"
 def Create_student():
     courses={}
     course2={}
@@ -34,6 +35,36 @@ def Create_student():
         courses["Email"]=email
         print(students)
 
+def Read():
+    option_r=int(input("Este es el menú de Read estas son las opciones \n1. Leer la información de todos los estudiantes. \n2. Leer la información de un estudiante en particular. \n3. Cursos de un estudiante en particular \n4. Oprima cualquier otra tecla para continuar\n"))
+    if option_r==1:
+        print("La información de todos los estudiantes es:")
+        for i,j in students.items():
+            print("\nEstudiante = ",i,":")
+            for f,z in j.items():
+                print(f,":",z)
+    
+    if option_r==2:
+        carnet_s= int(input("Ingrese el carnet del estudiante que desea buscar: "))
+        for i,j in students.items():
+            if i == carnet_s:
+                print("La información del estudiante con carnet",i,"es:\n")
+                for f,z in j.items():
+                    print(f,":",z)
+    
+    if option_r==3:
+        carnet_s= int(input("Ingrese el carnet del estudiante que desea buscar: "))
+        for i,j in students.items():
+            if i == carnet_s:
+                print("Los cursos de",i, "son: ")
+                conversion=str(j["Cursos"])
+                for x in range(len(characters)):
+                    conversion = conversion.replace(characters[x],"")
+                print(conversion.join(","))
+
+
+
+
 
 while loop:  
     print("\nMenu: \n1. Create \n2. Read \n3. Update \n4. Delete \n5. Exit ")
@@ -42,7 +73,7 @@ while loop:
         case 1:
             Create_student()
         case 2:
-           print("\n Read")
+            Read()
         case 3:        
             print("\n Update")
         case 4:
